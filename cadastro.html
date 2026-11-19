@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MyCloset | Criar conta</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body class="login-page">
+
+    <main class="login-container">
+
+        <section class="login-visual">
+            <div class="visual-content">
+                <p class="visual-small">WELCOME TO MY CLOSET</p>
+
+                <h1>
+                    Crie seu
+                    <br>
+                    universo.
+                </h1>
+
+                <p class="visual-description">
+                    Seu guarda-roupa digital, suas escolhas
+                    e seu estilo em um único lugar.
+                </p>
+
+                <div class="visual-decoration">
+                    <span>ESTILO</span>
+                    <span>·</span>
+                    <span>IDENTIDADE</span>
+                    <span>·</span>
+                    <span>VOCÊ</span>
+                </div>
+            </div>
+
+            <div class="visual-circle"></div>
+        </section>
+
+        <section class="login-box">
+
+            <div class="login-header">
+                <a href="index.html" class="login-logo">
+                    MY <span>CLOSET</span>
+                </a>
+
+                <p class="eyebrow">NOVA CONTA</p>
+
+                <h2>Crie seu armário.</h2>
+
+                <p>Comece sua experiência de moda.</p>
+            </div>
+
+            <form id="cadastroForm">
+
+                <div class="input-group">
+                    <label for="nome">Nome</label>
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Seu nome"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="seu@email.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="senha">Senha</label>
+                    <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        placeholder="Mínimo de 6 caracteres"
+                        minlength="6"
+                        autocomplete="new-password"
+                        required
+                    >
+                    <small class="password-hint">
+                        Use pelo menos 6 caracteres.
+                    </small>
+                </div>
+
+                <button
+                    type="submit"
+                    class="login-button"
+                    id="cadastroButton"
+                >
+                    Criar minha conta
+                </button>
+
+                <p
+                    id="mensagemCadastro"
+                    class="login-message"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+            </form>
+
+            <div class="create-account">
+                <span>Já possui uma conta?</span>
+                <a href="index.html">Fazer login</a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./js/supabase.js"></script>
+    <script src="./js/cadastro.js"></script>
+
+</body>
+</html>

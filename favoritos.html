@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCloset | Favoritos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="app-layout">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">MYCLOSET</div>
+
+        <nav class="sidebar-menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="armario.html">Meu Armário</a>
+            <a href="looks.html">Criar Look</a>
+            <a href="favoritos.html" class="active">Favoritos</a>
+            <a href="perfil.html">Perfil</a>
+        </nav>
+
+        
+    </aside>
+
+    <section class="content profile-content">
+
+        <header class="topbar">
+            <span class="welcome-label">SEU ESTILO, SUA COLEÇÃO</span>
+            <h1>Meus favoritos ♥</h1>
+            <p>Os looks que você escolheu guardar com carinho.</p>
+        </header>
+
+        <section class="meus-looks">
+            <div class="meus-looks-cabecalho">
+                <span>MYCLOSET COMMUNITY</span>
+                <h2>Looks favoritos</h2>
+                <p>Seus looks preferidos em um só lugar.</p>
+            </div>
+
+            <div id="listaLooksSalvos" class="lista-looks-salvos">
+                <p>Carregando favoritos...</p>
+            </div>
+        </section>
+
+    </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./js/supabase.js"></script>
+<script src="./js/favoritos.js"></script>
+
+</body>
+</html>

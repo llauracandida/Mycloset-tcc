@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCloset | Criar Look</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <body>
+
+<main class="app-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            MYCLOSET
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="armario.html">
+                Meu Armário
+            </a>
+
+            <a href="looks.html" class="active">
+                Criar Look
+            </a>
+
+            <a href="favoritos.html">
+                Favoritos
+            </a>
+
+            <a href="perfil.html">
+                Perfil
+            </a>
+
+        </nav>
+
+        <button
+            id="logoutButton"
+            class="sidebar-logout"
+        >
+            Sair
+        </button>
+
+    </aside>
+
+    <section class="content">
+
+        <header class="looks-header">
+            <h1> Criar Look</h1>
+            <p>Escolha as peças e monte sua combinação.</p>
+        </header>
+
+        <section class="look-builder">
+
+            
+            <div class="look-section">
+
+                <h2>Parte de Cima</h2>
+
+                <div class="selector">
+
+                    <button id="anteriorCima">
+                        ◀
+                    </button>
+
+                    <div class="roupa-preview">
+
+                        <img
+                            id="imagemCima"
+                            src=""
+                            alt="Parte de Cima"
+                        >
+
+                        <p id="nomeCima">
+                            Nenhuma peça
+                        </p>
+
+                    </div>
+
+                    <button id="proximoCima">
+                        ▶
+                    </button>
+
+                </div>
+
+            </div>
+
+            
+            <div class="look-section">
+
+                <h2>Parte de Baixo</h2>
+
+                <div class="selector">
+
+                    <button id="anteriorBaixo">
+                        ◀
+                    </button>
+
+                    <div class="roupa-preview">
+
+                        <img
+                            id="imagemBaixo"
+                            src=""
+                            alt="Parte de Baixo"
+                        >
+
+                        <p id="nomeBaixo">
+                            Nenhuma peça
+                        </p>
+
+                    </div>
+
+                    <button id="proximoBaixo">
+                        ▶
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- SAPATO -->
+            <div class="look-section">
+
+                <h2>Sapato</h2>
+
+                <div class="selector">
+
+                    <button id="anteriorSapato">
+                        ◀
+                    </button>
+
+                    <div class="roupa-preview">
+
+                        <img
+                            id="imagemSapato"
+                            src=""
+                            alt="Sapato"
+                        >
+
+                        <p id="nomeSapato">
+                            Nenhuma peça
+                        </p>
+
+                    </div>
+
+                    <button id="proximoSapato">
+                        ▶
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+<div class="look-name">
+
+    <label for="nomeLook">
+        Nome do Look
+    </label>
+
+    <input
+        type="text"
+        id="nomeLook"
+        placeholder="Ex: Look Casual, Look Festa..."
+    >
+
+</div>
+        <section class="look-preview">
+
+            <h2>Seu Look</h2>
+
+            <div class="look-final">
+
+                <img id="previewCima">
+
+                <img id="previewBaixo">
+
+                <img id="previewSapato">
+
+            </div>
+
+        </section>
+
+        <div class="look-actions">
+
+            <button id="favoritarLook">
+                ❤️ Favoritar
+            </button>
+
+            <button id="salvarLook">
+                💾 Salvar Look
+            </button>
+
+        </div>
+
+        </section>
+
+</main>
+<script>
+document
+    .getElementById("logoutButton")
+    .addEventListener(
+        "click",
+        async () => {
+
+            await supabaseClient
+                .auth
+                .signOut();
+
+            window.location.href =
+                "login.html";
+        }
+    );
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="./js/supabase.js"></script>
+
+    <script src="./js/jslooks.js"></script>
+
+</body>
+
+</html>

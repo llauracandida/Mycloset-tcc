@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MyCloset | Login</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="login-page">
+
+        <!-- LADO VISUAL -->
+        <section class="login-visual">
+            <div class="visual-content">
+                <div class="visual-logo">
+                    MYCLOSET
+                </div>
+
+                <span class="visual-line"></span>
+
+                <h1>
+                    Seu estilo.
+                    <br>
+                    Seu guarda-roupa.
+                    <br>
+                    <strong>Seu momento.</strong>
+                </h1>
+
+                <p>
+                    Organize suas peças, descubra novas combinações
+                    e vista sua personalidade.
+                </p>
+            </div>
+
+            <div class="visual-decoration decoration-one"></div>
+            <div class="visual-decoration decoration-two"></div>
+        </section>
+
+        <!-- LOGIN -->
+        <section class="login-section">
+
+            <div class="login-card">
+
+                <div class="mobile-logo">
+                    MYCLOSET
+                </div>
+
+                <div class="login-heading">
+                    <span>BEM-VINDO DE VOLTA</span>
+
+                    <h2>
+                        Entre na sua conta
+                    </h2>
+
+                    <p>
+                        Acesse seu guarda-roupa virtual e continue
+                        criando seus looks.
+                    </p>
+                </div>
+
+                <form id="loginForm">
+
+                    <div class="input-group">
+                        <label for="email">
+                            E-MAIL
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="seu@email.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="input-group">
+
+                        <div class="password-label">
+                            <label for="senha">
+                                SENHA
+                            </label>
+
+                            <a href="#">
+                                Esqueci minha senha
+                            </a>
+                        </div>
+
+                        <input
+                            type="password"
+                            id="senha"
+                            placeholder="Digite sua senha"
+                            autocomplete="current-password"
+                            required
+                        >
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="login-button"
+                    >
+                        <span>ENTRAR</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+
+                </form>
+
+                <p
+                    id="mensagemLogin"
+                    class="login-message"
+                ></p>
+
+                <div class="divider">
+                    <span>ou</span>
+                </div>
+
+                <div class="register-area">
+                    <p>
+                        Ainda não possui uma conta?
+                    </p>
+
+                    <a
+                        href="cadastro.html"
+                        class="register-button"
+                    >
+                        CRIAR MINHA CONTA
+                    </a>
+                </div>
+
+                <p class="copyright">
+                    MYCLOSET © 2026
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./js/supabase.js"></script>
+    <script src="./js/jslogin.js"></script>
+
+</body>
+</html>

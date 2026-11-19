@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MyCloset | Início</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+   <main class="app-layout">
+
+
+
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+        MYCLOSET
+    </div>
+
+    <nav class="sidebar-menu">
+
+        <a href="dashboard.html" class="active">
+            Dashboard
+        </a>
+
+        <a href="armario.html">
+            Meu Armário
+        </a>
+
+        <a href="looks.html">
+            Criar Look
+        </a>
+
+        <a href="favoritos.html">
+            Favoritos
+        </a>
+
+        <a href="perfil.html">
+            Perfil
+        </a>
+
+    </nav>
+
+    <button
+        id="logoutButton"
+        class="sidebar-logout"
+    >
+        Sair
+    </button>
+
+</aside>
+
+
+
+<section class="content">
+
+    <header class="topbar">
+
+        <div>
+
+            <span class="welcome-label">
+                BEM-VINDO(A)
+            </span>
+
+            <h1 id="saudacao">
+                Olá!
+            </h1>
+
+        </div>
+
+    </header>
+
+
+    
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <span>
+                MYCLOSET PREMIUM
+            </span>
+
+            <h2>
+                Seu estilo começa
+                no seu guarda-roupa.
+            </h2>
+
+            <p>
+                Organize suas peças,
+                descubra novas combinações
+                e monte looks perfeitos
+                para qualquer ocasião.
+            </p>
+
+            <div class="hero-buttons">
+
+               <a
+    href="looks.html"
+    class="btn-primary"
+>
+    Criar Look
+</a>
+
+                <a
+                    href="armario.html"
+                    class="btn-secondary"
+                >
+                    Adicionar Roupa
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    
+
+   <br>
+   <br>
+<br>
+<br>
+<br>
+    
+
+    <div class="stat-card">
+    <h3 id="totalRoupas">0</h3>
+    <span>Peças cadastradas</span>
+</div>
+
+    <section class="section-header">
+    <h2>Últimas peças adicionadas</h2>
+</section>
+
+<section id="closetPreview" class="closet-preview">
+    <p>Carregando suas peças...</p>
+</section>
+</section>
+
+</main>
+
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="./js/supabase.js"></script>
+
+    <script>
+
+        async function carregarUsuario() {
+
+            const {
+                data,
+                error
+            } = await supabaseClient.auth.getUser();
+
+
+            if (error || !data.user) {
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+
+            const usuario =
+                data.user;
+
+
+            const nome =
+                usuario.user_metadata?.nome ||
+                usuario.email.split("@")[0];
+
+
+            document.getElementById(
+                "saudacao"
+            ).textContent =
+                `Olá, ${nome}! `;
+
+        }
+
+
+        carregarUsuario();
+
+async function carregarResumoArmario() {
+    const totalElemento = document.getElementById("totalRoupas");
+    const preview = document.getElementById("closetPreview");
+
+    try {
+        const { data: { user }, error: erroUsuario } =
+            await supabaseClient.auth.getUser();
+
+        if (erroUsuario || !user) {
+            window.location.href = "login.html";
+            return;
+        }
+
+        const { data: roupas, error } = await supabaseClient
+            .from("roupas")
+            .select("id, nome, categoria, cor, imagem")
+            .eq("usuario_id", user.id)
+            .order("id", { ascending: false });
+
+        if (error) throw error;
+
+        // Atualiza a quantidade real de peças
+        totalElemento.textContent = roupas.length;
+
+        // Mostra as peças mais recentes primeiro
+        preview.innerHTML = "";
+
+        if (roupas.length === 0) {
+            preview.innerHTML =
+                "<p>Você ainda não cadastrou nenhuma peça.</p>";
+            return;
+        }
+
+        roupas.slice(0, 4).forEach((roupa) => {
+            const card = document.createElement("div");
+            card.className = "piece-card";
+
+            if (roupa.imagem) {
+                const img = document.createElement("img");
+                img.src = roupa.imagem;
+                img.alt = roupa.nome || "Peça de roupa";
+                img.className = "preview-roupa-foto";
+                img.loading = "lazy";
+
+                card.appendChild(img);
+            } else {
+                const icone = document.createElement("span");
+                icone.textContent = "👗";
+                card.appendChild(icone);
+            }
+
+            const nome = document.createElement("p");
+            nome.textContent = roupa.nome || roupa.categoria || "Roupa";
+            nome.className = "preview-roupa-nome";
+
+            card.appendChild(nome);
+            preview.appendChild(card);
+        });
+
+    } catch (erro) {
+        console.error("Erro ao carregar o armário:", erro);
+        preview.innerHTML =
+            "<p>Não foi possível carregar suas peças.</p>";
+    }
+}
+
+carregarResumoArmario();
+
+
+        
+        document
+            .getElementById("logoutButton")
+            .addEventListener("click", async () => {
+
+                await supabaseClient.auth.signOut();
+
+                localStorage.removeItem(
+                    "usuarioId"
+                );
+
+                window.location.href =
+                    "login.html";
+
+            });
+
+    </script>
+
+</body>
+
+</html>

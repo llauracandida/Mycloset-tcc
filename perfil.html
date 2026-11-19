@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCloset | Meu Perfil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="app-layout">
+
+        <aside class="sidebar">
+            <div class="sidebar-logo">MYCLOSET</div>
+
+            <nav class="sidebar-menu">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="armario.html">Meu Armário</a>
+                <a href="looks.html">Criar Look</a>
+                <a href="favoritos.html">Favoritos</a>
+                <a href="perfil.html" class="active">Perfil</a>
+            </nav>
+
+            <button id="logoutButton" class="sidebar-logout" type="button">
+                Sair
+            </button>
+        </aside>
+
+        <section class="content profile-content">
+
+            <header class="topbar">
+                <div>
+                    <span class="welcome-label">MINHA CONTA</span>
+                    <h1>Meu perfil</h1>
+                </div>
+            </header>
+
+            <section class="profile-banner">
+                <span>MYCLOSET COMMUNITY</span>
+                <h2>Seu estilo, sua identidade.</h2>
+                <p>Personalize seu perfil e mostre um pouco de quem você é.</p>
+            </section>
+
+            <section class="profile-card">
+
+                <div class="profile-photo-area">
+                    <img
+                        id="fotoPreview"
+                        src=""
+                        alt="Foto de perfil"
+                        class="profile-photo"
+                    >
+
+                    <label for="fotoPerfil" class="photo-change-button">
+                        Alterar foto
+                    </label>
+
+                    <input
+                        type="file"
+                        id="fotoPerfil"
+                        accept="image/*"
+                        hidden
+                    >
+
+                    <p class="profile-hint">
+                        Escolha uma foto para seu perfil.
+                    </p>
+                </div>
+
+                <form id="perfilForm" class="profile-form">
+
+                    <div class="profile-field">
+                        <label for="nomePerfil">Nome</label>
+                        <input
+                            type="text"
+                            id="nomePerfil"
+                            maxlength="60"
+                            placeholder="Como você se chama?"
+                            required
+                        >
+                    </div>
+
+                    <div class="profile-field">
+                        <label for="usuarioPerfil">Nome de usuário</label>
+                        <input
+                            type="text"
+                            id="usuarioPerfil"
+                            maxlength="30"
+                            placeholder="Ex.: meu.usuario"
+                            required
+                        >
+                        <small>Use letras sem acento, números, ponto, hífen ou underline.</small>
+                    </div>
+
+                    <div class="profile-field">
+                        <label for="bioPerfil">Bio</label>
+                        <textarea
+                            id="bioPerfil"
+                            maxlength="180"
+                            rows="4"
+                            placeholder="Conte um pouco sobre você e seu estilo..."
+                        ></textarea>
+                        <small>Máximo de 180 caracteres.</small>
+                    </div>
+
+                    <p
+                        id="mensagemPerfil"
+                        class="profile-message"
+                        aria-live="polite"
+                    ></p>
+
+                    <button
+                        type="submit"
+                        id="salvarPerfil"
+                        class="profile-save-button"
+                    >
+                        Salvar alterações
+                    </button>
+
+                </form>
+            </section>
+
+            <!-- Todos os looks salvos, inclusive os não favoritos -->
+            <section class="meus-looks">
+                <div class="meus-looks-cabecalho">
+                    <div>
+                        <span class="welcome-label">SUA COLEÇÃO</span>
+                        <h2>Meus looks salvos</h2>
+                        <p>Todos os looks que você criou.</p>
+                    </div>
+                </div>
+
+                <div id="listaLooksSalvos" class="lista-looks-salvos">
+                    <p>Carregando seus looks...</p>
+                </div>
+            </section>
+
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./js/supabase.js"></script>
+    <script src="./js/perfil.js"></script>
+</body>
+</html>

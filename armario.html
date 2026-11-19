@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>MyCloset | Meu Armário</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<main class="app-layout">
+
+    
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            MYCLOSET
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html">
+                Início
+            </a>
+
+            <a
+                href="armario.html"
+                class="active"
+            >
+                Meu Armário
+            </a>
+
+            <a href="looks.html">
+                Criar Look
+            </a>
+
+            <a href="favoritos.html">
+                Favoritos
+            </a>
+
+            <a href="perfil.html">
+                Perfil
+            </a>
+
+        </nav>
+
+        <button
+            id="logoutButton"
+            class="sidebar-logout"
+        >
+            Sair
+        </button>
+
+    </aside>
+
+
+   
+
+    <section class="content">
+
+        <header class="topbar">
+
+            <span class="welcome-label">
+                MEU CLOSET
+            </span>
+
+            <h1>
+                Meu Armário
+            </h1>
+
+            <p class="armario-subtitle">
+                Organize suas peças e descubra
+                novas possibilidades para o seu estilo.
+            </p>
+
+        </header>
+
+
+        
+
+        <section class="armario-actions">
+
+          <button
+    type="button"
+    id="abrirFormulario"
+    class="btn-primary"
+>
+    + ADICIONAR ROUPA
+</button>
+        </section>
+
+
+        
+    
+
+        <section
+            id="formularioRoupa"
+            class="form-card hidden"
+        >
+
+            <div class="form-header">
+
+                <div>
+
+                    <span>
+                        NOVA PEÇA
+                    </span>
+
+                    <h2>
+                        Adicionar roupa
+                    </h2>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="fecharFormulario"
+                    class="close-button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="roupaForm">
+
+                
+
+                <div class="input-group">
+
+                    <label for="nome">
+                        Nome da peça
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Ex.: Vestido preto"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                
+
+                <div class="input-group">
+
+                    <label for="categoria">
+                        Categoria
+                    </label>
+
+                    <select
+                        id="categoria"
+                        required
+                    >
+
+                        <option value="">
+                            Selecione uma categoria
+                        </option>
+
+                        <option value="Blusas">
+                            Blusas
+                        </option>
+
+                        <option value="Calças">
+                            Calças
+                        </option>
+
+                        <option value="Vestidos">
+                            Vestidos
+                        </option>
+
+                        <option value="Saias">
+                            Saias
+                        </option>
+
+                        <option value="Shorts">
+                            Shorts
+                        </option>
+
+                        <option value="Casacos">
+                            Casacos
+                        </option>
+
+                        <option value="Sapatos">
+                            Sapatos
+                        </option>
+
+                        <option value="Acessórios">
+                            Acessórios
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="input-group">
+
+                    <label for="cor">
+                        Cor
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cor"
+                        placeholder="Ex.: Preto"
+                        maxlength="50"
+                    >
+
+                </div>
+
+
+                
+
+                
+
+                
+
+                <div class="input-group">
+
+                    <label for="imagem">
+                        Foto da peça
+                    </label>
+
+                    <input
+                        type="file"
+                        id="imagem"
+                        accept="image/png, image/jpeg, image/webp"
+                    >
+
+                    <small class="file-help">
+                        JPG, PNG ou WEBP — máximo 5 MB.
+                    </small>
+
+                </div>
+
+
+                
+                <button
+                    type="submit"
+                    class="btn-primary save-button"
+                >
+                    Salvar roupa
+                </button>
+
+            </form>
+
+
+            <p id="mensagemRoupa"></p>
+
+        </section>
+
+
+       
+
+        <section class="armario-filters">
+
+    <button
+        class="filter active"
+        onclick="filtrarRoupas('todas')"
+    >
+        Todas
+    </button>
+
+    <button
+        class="filter"
+        onclick="filtrarRoupas('Blusas')"
+    >
+        Blusas
+    </button>
+
+    <button
+        class="filter"
+        onclick="filtrarRoupas('Calças')"
+    >
+        Calças
+    </button>
+
+    <button
+        class="filter"
+        onclick="filtrarRoupas('Shorts')"
+    >
+       Shorts
+    </button>
+    <button
+        class="filter"
+        onclick="filtrarRoupas('Vestidos')"
+    >
+        Vestidos
+    </button>
+
+    <button
+        class="filter"
+        onclick="filtrarRoupas('Saias')"
+    >
+        Saias
+    </button>
+
+    <button
+        class="filter"
+        onclick="filtrarRoupas('Sapatos')"
+    >
+        Sapatos
+    </button>
+
+</section>
+
+        
+
+        <section>
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="welcome-label">
+                        SEU CLOSET
+                    </span>
+
+                    <h2>
+                        Suas peças
+                    </h2>
+
+                </div>
+
+                <span id="contadorRoupas">
+                    0 peças
+                </span>
+
+            </div>
+
+
+            
+             
+            <div
+                id="listaRoupas"
+                class="clothes-grid"
+            >
+<div id="listaRoupas" class="closet-grid"></div>
+
+        </section>
+
+    </section>
+
+</main>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./js/supabase.js"></script>
+<script src="./js/jsarmario.js"></script>
+
+
+</body>
+
+</html>
